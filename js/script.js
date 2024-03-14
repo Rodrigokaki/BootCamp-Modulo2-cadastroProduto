@@ -40,6 +40,11 @@ var formatter = new Intl.NumberFormat('pt-BR', {
   currency: 'BRL',
 });
 
+//Convert to number
+function convertToNumber(priceFormat){
+  return priceFormat.replace(/\./g, '').replace(',', '.');
+}
+
 loadProducts();
 
 //load all products
@@ -56,7 +61,7 @@ function save(){
     id: products.length + 1,
     name: document.getElementById("name").value,
     description: document.getElementById("description").value,
-    price: document.getElementById("price").value,
+    price: convertToNumber(document.getElementById("price").value),
     category: document.getElementById("selectCategory").value,
     promotion: document.getElementById("checkBoxPromotion").checked,
     new: document.getElementById("checkBoxNewProduct").checked,
@@ -82,7 +87,9 @@ function addNewRow(prod){
     newRow.insertCell().appendChild(nameNode);
 
     var descriptionNode = document.createTextNode(prod.description);
-    newRow.insertCell().appendChild(descriptionNode);
+    var cell = newRow.insertCell();
+    cell.className='d-none d-md-table-cell';
+    cell.appendChild(descriptionNode);
 
     var priceNode = document.createTextNode(formatter.format(prod.price));
     newRow.insertCell().appendChild(priceNode);
@@ -98,7 +105,9 @@ function addNewRow(prod){
     if(prod.promotion){
         options += '<span class="badge bg-success">P</span>';
     }
-    newRow.insertCell().innerHTML = options;
+    cell = newRow.insertCell();
+    cell.className = 'd-none d-md-table-cell'
+    cell.innerHTML = options;
 }
 
 //mask for price
