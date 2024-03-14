@@ -20,7 +20,7 @@
 
         <div class="row">
           <div class="col-10 offset-1">
-            <form>
+            <form onsubmit="save(); return false" id="formProduct">
 
 
               <div class="row mb-3 mt-3">
@@ -28,7 +28,7 @@
                   <label for="name" class="col-form-label">Nome:</label>
                 </div>
                 <div class="col-10">
-                  <input type="text" id="name" class="form-control">
+                  <input type="text" id="name" class="form-control" required>
                 </div>
               </div>
 
@@ -37,7 +37,7 @@
                   <label for="description" class="col-form-label">Descrição:</label>
                 </div>
                 <div class="col-10">
-                  <input type="text" id="description" class="form-control">
+                  <input type="text" id="description" class="form-control" required>
                 </div>
               </div>
 
@@ -46,14 +46,14 @@
                   <label for="price" class="col-form-label">Preço:</label>
                 </div>
                 <div class="col-4">
-                  <input type="text" id="price" class="form-control">
+                  <input type="text" id="price" class="form-control" required>
                 </div>
                 <div class="col-2">
                   <label for="category" class="col-form-label">Categoria:</label>
                 </div>
                 <div class="col-4">
-                  <select class="form-select" aria-label="Selecione uma categoria">
-                    <option selected>Escolha:</option>
+                  <select class="form-select" aria-label="Selecione uma categoria" id="selectCategory" required>
+                    <option value="" selected>Escolha:</option>
                     <option value="1">Produção Própria</option>
                     <option value="2">Nacional</option>
                     <option value="3">Importado</option>

@@ -4,7 +4,7 @@ var products = [
     name: "Computador M1-TX",
     description: "Intel I7, 16GB, SSD 256, HD 1T",
     price: 4900,
-    category: 1,
+    category: 2,
     promotion: true,
     new: true,
   },
@@ -13,7 +13,7 @@ var products = [
     name: "Computador M2-TX",
     description: "Intel I7, 32GB, SSD 512, HD 1T",
     price: 5900,
-    category: 2,
+    category: 3,
     promotion: false,
     new: true,
   },
@@ -22,7 +22,7 @@ var products = [
     name: "Computador M1-T",
     description: "Intel I5, 16GB, HD 1T",
     price: 2900,
-    category: 3,
+    category: 1,
     promotion: false,
     new: false,
   },
@@ -47,6 +47,26 @@ function loadProducts(){
     for(let prod of products){
         addNewRow(prod);
     }
+}
+
+//save product
+function save(){
+  
+  prod = {
+    id: products.length + 1,
+    name: document.getElementById("name").value,
+    description: document.getElementById("description").value,
+    price: document.getElementById("price").value,
+    category: document.getElementById("selectCategory").value,
+    promotion: document.getElementById("checkBoxPromotion").checked,
+    new: document.getElementById("checkBoxNewProduct").checked,
+  }
+
+  addNewRow(prod);
+  products.push(prod);
+
+  document.getElementById("formProduct").reset();
+
 }
 
 //add new row
